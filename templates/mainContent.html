@@ -1,0 +1,37 @@
+<div class="container ">
+  <hr class="featurette-divider my-5">
+  <div class="row featurette">
+    <div class="col-md-9">
+      <h2 class="featurette-heading">Generate your custom caption. <span class="text-muted">It’ll blow your mind.</span>
+      </h2>
+      <p class="lead">Upload your custome video/audio in english language and get auto generated caption file (.srt) of
+        that audio/video.</p>
+    </div>
+    <div class="col-md-3 mx-auto text-center">
+      <img class="w-50" src="/static/img/mi.png">
+    </div>
+  </div>
+  <hr class="featurette-divider my-5">
+  <div class="row featurette">
+    <div class="col-md-9 order-md-2">
+      <h2 class="featurette-heading">Dump the old ways. <span class="text-muted"> See for yourself.</span></h2>
+      <p class="lead">No need to write or search for the caption anymore.</p>
+    </div>
+    <div class="col-md-3 order-md-1">
+      <img class="container rounded" src="/static/img/type.jpg">
+    </div>
+  </div>
+  <hr class="featurette-divider my-5">
+  <div class="row featurette">
+    {% if request.user.is_anonymous %}
+    <div class="col-md-9">
+      <h2 class="featurette-heading">Generate, Download and Use. <span class="text-muted">It’s that Simple.</span></h2>
+      <p class="lead">Join us today and start to generate your own subtitle. Just upload the video and download the
+        subtitle.For Detailed guide on how to use <a href="">Click Here</a>.</p>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary btn-block mb-4" data-toggle="modal" href="#registerModal">Join Us!</button>
+    </div>
+    {% endif %}
+  </div>
+</div>

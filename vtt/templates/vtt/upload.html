@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} SubGen | {{ request.user }}{% endblock title %}
+{% block home %}
+  <li class="nav-item active">
+    <a class="nav-link" href="">Home </a>
+  </li>
+{% endblock home %}
+
+
+{% load static %}
+
+{% block loginLogout %} 
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item ">
+      <a class="nav-link " href="/up" ><h6><i class="bi bi-person-fill" style="font-size: 1rem;"></i> Welcome, {{request.user.first_name}}</h6></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="/user_files" ><h6>My Files</h6></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="/logout" ><h6>Logout <i class="bi bi-box-arrow-right" style="font-size: 1rem;"></i></h6></a>
+    </li>
+  </ul>
+{% endblock loginLogout %}
+
+{% block body %}
+<div class="container">
+  <div class="col-md-12 py-5">
+   <h2 class="featurette-heading">Upload file to get started <span class="text-muted"></span></h2>
+   <div class="input-group">
+   <form class="input-group" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     <input type="file" class="form-control"  name="myfile">
+     <button type="submit" class="btn btn-primary">Upload</button>
+   </form>
+   </div>
+ </div>
+</div>
+  {% if uploaded_file_url %}
+    <h4 class="featurette-heading text-center py-4"> Your File has been uploaded. Check at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a><span class="text-muted"></span></h4>
+  {% endif %}
+
+  {% comment %} <p><a href="">Return to home</a></p> {% endcomment %}
+
+  {% include 'mainContent.html' %}
+
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}
+
+<!-- <input type="file" name="myfile">
+<button type="submit">Upload</button> -->
+<!-- 
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="myfile">
+  <button type="submit">Upload</button>
+</form> -->
+

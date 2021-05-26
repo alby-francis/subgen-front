@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} SubGen | {{ request.user }}{% endblock title %}
+{% block home %}
+  <li class="nav-item active">
+    <a class="nav-link" href="/user">Home </a>
+  </li>
+{% endblock home %}
+{% block loginLogout %} 
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item ">
+      <a class="nav-link " href="#" ><h6><i class="bi bi-person-fill" style="font-size: 1rem;"></i> Welcome, {{request.user.first_name}}</h6></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="/logout" ><h6>Logout <i class="bi bi-box-arrow-right" style="font-size: 1rem;"></i></h6></a>
+    </li>
+  </ul>
+{% endblock loginLogout %}
+{% block body %} 
+
+<!--  slide show-->
+
+ <div class="container">
+     <div class="col-md-12 py-5">
+      <h2 class="featurette-heading">Upload file to get started <span class="text-muted"></span></h2>
+      <div class="input-group ">
+        <input type="file" class="form-control" id="inputGroupFile02">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        <button class="btn btn-primary" disabled data-bs-toggle="button" type="button">Download</button>
+      </div>
+    </div>
+ </div>
+
+
+<!--  Main content-->
+
+{% include 'mainContent.html' %}
+
+{% endblock body %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}
+
+{% if uploaded_file_url %}
+<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+{% endif %}

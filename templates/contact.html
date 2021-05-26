@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block body %} 
+    <div class="text-center">
+  <img src="/static/img/contact.png" class="rounded  w-50" alt="Contact Image">
+</div>
+<section class=" p-4 d-flex justify-content-center mb-4">
+      <form id="contact-form" class="text-center" style="width: 100%; max-width: 500px" method="post" action="/contact">
+      {% csrf_token %}
+        <h2>Contact us</h2>
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+          <label class="sr-only" for="exampleInputEmail3">Name</label>
+                <input type="text" class="form-control form-control-sm mr-1" id="contactname" name="contactname"
+                  placeholder="Name" required>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 42.4px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                <input type="email" class="form-control form-control-sm mr-1" id="contactemail" name="contactemail"
+                  placeholder="Email" required>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+          <label class="sr-only" for="exampleInputEmail3">Message</label>
+                <textarea type="textarea" class="form-control form-control-sm mr-1" id="contactmessage"
+                  placeholder="Message" name="contactmessage" rows="10" style="height:100%"; required></textarea>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 60px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <!-- Submit button -->
+        <button class="btn btn-primary btn-block mb-4">Send</button>
+      </form>
+    </section>
+ {% endblock body %}
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

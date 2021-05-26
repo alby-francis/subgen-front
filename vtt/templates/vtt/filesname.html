@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+{% block title %} SubGen | {{ request.user }}{% endblock title %}
+{% block home %}
+  <li class="nav-item active">
+    <a class="nav-link" href="/up">Home </a>
+  </li>
+{% endblock home %}
+
+
+{% load static %}
+
+{% block loginLogout %} 
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item ">
+      <a class="nav-link " href="/up" ><h6><i class="bi bi-person-fill" style="font-size: 1rem;"></i> Welcome, {{request.user.first_name}}</h6></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="/logout" ><h6>Logout <i class="bi bi-box-arrow-right" style="font-size: 1rem;"></i></h6></a>
+    </li>
+  </ul>
+{% endblock loginLogout %}
+
+{% block body %}
+<div class="col-md-3 mx-auto text-center">
+  <img src="/static/img/folder.jpg" class="rounded w-50" alt="Contact Image">
+</div>
+<h4 class="featurette-heading text-center py-4">My Uploded File Details <span class="text-muted"></span></h4>
+<table class="table mx-10 table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">File Name</th>
+        <th scope="col">Request Subtitle</th>
+        <th scope="col">Check Status</th>
+        <th scope="col">Download Subtitle</th>
+        <th scope="col">Upload Date</th>
+      </tr>
+    </thead>
+    {% for Files in user_up_files %}  
+    <tbody>
+        <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <th scope="row">{{Files.File_name}}</th>
+            <td><a href="{% url 'f_idx_for_srt_cli' forloop.counter %}"> Request</a></td>
+            <td><a href="{% url 'f_idx_for_status' forloop.counter %}"> Check</a></td>
+            <td><a href="{% url 'f_idx_for_get_srt' forloop.counter %}"> Download</a></td>
+            <td>{{Files.Logtime}}</td>
+        {% empty %}
+        <h4 class="featurette-heading">Upload file to get started <span class="text-muted"></span></h4>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+
+
+  {% include 'footer.html' %}
+
+
+{% endblock body %}
